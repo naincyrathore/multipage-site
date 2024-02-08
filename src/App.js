@@ -1,8 +1,9 @@
 import './App.css';
-import { BrowserRouter, Route, Routes, Switch, Link, NavLink } from 'react-router-dom/cjs/react-router-dom.min';
+import { BrowserRouter, Route, Routes, Redirect, Switch, Link, NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import Home from './components/Home';
 import Contact from './components/Contact';
 import About from './components/About';
+import Article from './components/Article';
 
 function App() {
   return (
@@ -10,9 +11,9 @@ function App() {
       <div className="App">
           <nav>
             <h1>My Article</h1>
-            <Link exact to="/">Home</Link>
-            <Link to="/contact">Contact</Link>
-            <Link to="/about">About</Link>
+            <NavLink exact to="/">Home</NavLink>
+            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/about">About</NavLink>
           </nav>
 
           <Switch>
@@ -28,6 +29,12 @@ function App() {
             <Route path="/about">
               {console.log('Rendering About')}
               <About/>
+            </Route>
+            <Route path='/articles/:id'>
+              <Article/>
+            </Route>
+            <Route path='*'>
+              <Redirect to='/' />
             </Route>
           </Switch>
       </div>
